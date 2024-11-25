@@ -1,0 +1,8 @@
+.page {
+    background-color: rgba(0, 0, 0, 1);
+    background-size: cover;
+    width: 100%;
+    max-height: auto;
+    color: #fff;
+    font-family: "My Inter";
+}
