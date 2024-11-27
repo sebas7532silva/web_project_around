@@ -87,11 +87,11 @@
         max-width: 100%;
         row-gap: 20px;
         column-gap: 0px;
-        justify-items: center; /* Ensure it is centered */
+        justify-items: center; 
     }
 
     .places__card {
-        width: 282px; /* Keep consistent with the max-width */
+        width: 282px; 
     }
 }
 
