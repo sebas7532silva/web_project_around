@@ -1,0 +1,82 @@
+.places {
+    max-width: 880px;
+    display: grid;
+    justify-self: center;
+    grid-template-columns: repeat(3, auto);
+    column-gap: 17px;
+    row-gap: 20px;
+}
+
+.places__card {
+    width: 282px;
+    height: 361px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+}
+
+.places__card-image {
+    width: 100%;
+    height: 282px;
+    border-radius: 10px 10px 0 0;
+}
+
+.places__card-info {
+    display: flex;
+    margin: 25px 15px 0;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.places__card-title {
+    color: black;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 900;
+    text-align: left;
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.places__card-button {
+    border: none;
+    padding: 0;
+    width: 21px;
+    height: 19px;
+    background: none;
+    cursor: pointer;
+    display: inline-block;  /* Ensures button behaves like an inline element */
+    position: relative;
+  }
+
+  .places__card-like {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+
+
+.places__card-button:hover {
+    opacity: 50%;
+}
+
+.places__card-button.active .places__card-like{
+    content: url("../images/like_active.svg");
+}
+
+@media screen and (min-width: 728px) and (max-width: 1024px) {
+    .places{
+        grid-template-columns: repeat(2, auto);
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 728px) {
+    .places{
+        grid-template-columns: repeat(1, auto);
+    }
+}
+

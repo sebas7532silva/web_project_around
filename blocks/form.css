@@ -1,0 +1,96 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    max-width: 430px;
+    width: 100%;
+    max-height: fit-content;
+    height: 100%;
+    align-items: center;
+    padding-right: 35px;
+    padding-left: 35px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+}
+
+.form__title {
+    font-family: "My Inter Black";
+    font-size: 24px;
+    font-weight: 900;
+    text-align: left;
+    color: black;
+    max-width: 358px;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 54px;
+    margin-top: 34px;
+}
+
+.form__field {
+    color: black;
+    max-width: 358px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(196, 196, 196, 1);
+    padding: 0;
+}
+
+.form__field-name {
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.form__field-about {
+    margin-bottom: 3.5rem;
+}
+
+.form__field:focus {
+    outline: none;
+}
+
+.form__field::placeholder,
+textarea::placeholder {
+    color: rgba(196, 196, 196, 1);
+}
+
+.form__field:focus::placeholder,
+textarea:focus::placeholder {
+    color: rgba(196, 196, 196, 1);
+}
+
+
+.form__save {
+    color: rgba(196, 196, 196, 1);
+    border: 1px solid rgba(196, 196, 196, 1);
+    max-width: 358px;
+    width: 100%;
+    height: 50.15px;
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 36px;
+    border-radius: 2px;
+}
+
+
+
+.form__closure {
+    display: flex;
+    position: fixed;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+    align-self: end;
+    top: 60px;
+    margin-left: 425px;
+}
+
+.form__closure-icon {
+    width: 100%;
+    height: 100%;
+}

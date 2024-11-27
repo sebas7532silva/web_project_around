@@ -39,12 +39,131 @@
                              alt="Simbolo +" />
                     </button>     
                 </div>
+                <div class="header__popup">
+                    <div class="header__form-items">
+                        <button class="form__closure">
+                            <img src="./images/close_icon.svg"
+                                 class="form__closure-icon"
+                                 alt="Close" />
+                        </button>
+                        <form id="form"
+                              class="form">
+                            <h2 class="form__title">
+                                Editar perfil
+                            </h2>
+                            <input type="text" 
+                                   id="nombre" 
+                                   name="nombre"
+                                   class="form__field form__field-name"
+                                   placeholder="Nombre">
+                            <input type="text" 
+                                   id="about" 
+                                   name="about"
+                                   class="form__field form__field-about"
+                                   placeholder="Acerca de mí">
+                            <button type="submit" 
+                            value="Guardar"
+                            class="form__save">
+                            Guardar
+                        </form>
+                    </div>
+                </div>
+                
             </header>
-            <main>
+            <main class="main">
                 <section class="places">
-
+                    <div class="places__card">
+                        <img class="places__card-image"
+                             src="./images/Yosemite.jpg"
+                             alt="Imagen de Yosemite" />
+                        <div class="places__card-info">
+                            <p class="places__card-title">Valle de Yosemite</p>
+                            <button class="places__card-button">
+                                <img
+                                  src="./images/like.svg"
+                                  alt="Like"
+                                  class="places__card-like"/>
+                              </button>
+                        </div>
+                    </div>
+                    <div class="places__card">
+                        <img class="places__card-image"
+                             src="./images/Lake.jpg"
+                             alt="Imagen de Lago Louise" />
+                        <div class="places__card-info">
+                            <p class="places__card-title">Lago Louise</p>
+                            <button class="places__card-button">
+                                <img
+                                  src="./images/like.svg"
+                                  alt="Like"
+                                  class="places__card-like"/>
+                              </button>
+                        </div>
+                    </div>
+                    <div class="places__card">
+                        <img class="places__card-image"
+                             src="./images/Smoky.jpg"
+                             alt="Imagen de Montañas Calvas" />
+                        <div class="places__card-info">
+                            <p class="places__card-title">Montañas Calvas</p>
+                            <button class="places__card-button">
+                                <img
+                                  src="./images/like.svg"
+                                  alt="Like"
+                                  class="places__card-like"/>
+                              </button>
+                        </div>
+                    </div>
+                    <div class="places__card">
+                        <img class="places__card-image"
+                             src="./images/Latemar.jpg"
+                             alt="Imagen de Yosemite" />
+                        <div class="places__card-info">
+                            <p class="places__card-title">Latemar</p>
+                            <button class="places__card-button">
+                                <img
+                                  src="./images/like.svg"
+                                  alt="Like"
+                                  class="places__card-like"/>
+                              </button>
+                        </div>
+                    </div>
+                    <div class="places__card">
+                        <img class="places__card-image"
+                             src="./images/Vanois.jpg"
+                             alt="Imagen de Vanois National" />
+                        <div class="places__card-info">
+                            <p class="places__card-title">Vanois National Park</p>
+                            <button class="places__card-button">
+                                <img
+                                  src="./images/like.svg"
+                                  alt="Like"
+                                  class="places__card-like"/>
+                              </button>  
+                        </div>
+                    </div>
+                    <div class="places__card">
+                        <img class="places__card-image"
+                             src="./images/Braies.jpg"
+                             alt="Imagen de Lago diBrais" />
+                        <div class="places__card-info">
+                            <p class="places__card-title">Lago diBrais</p>
+                            <button class="places__card-button">
+                                <img
+                                  src="./images/like.svg"
+                                  alt="Like"
+                                  class="places__card-like"/>
+                              </button>
+                        </div>
+                    </div>
                 </section>
             </main>
+            <footer class="footer">
+                <p class="footer__copyright">
+                    © 2024 Around The U.S.
+                </p>
+            </footer>
         </div>
+        <script src="script.js"></script>
     </body>
 </html>
