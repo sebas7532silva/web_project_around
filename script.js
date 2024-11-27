@@ -3,6 +3,22 @@ function change_to_active() {
     this.classList.toggle("active")
 };
 
+// Botones de input
+let input_name = document.querySelector(".form__field-name");
+let input_about = document.querySelector(".form__field-about");
+
+// Obtener el botón de guardar información
+let buttonSave = document.querySelector(".form__save");
+
+function reset_form() {
+    input_name.value = ''; // Clear the name input
+    input_about.value = ''; // Clear the about input
+    // Reset the button styles after submission
+    buttonSave.style.color = "rgba(196, 196, 196, 1)";
+    buttonSave.style.border = "1px solid rgba(196, 196, 196, 1)";
+    buttonSave.style.backgroundColor = "transparent";
+}
+
 // Funcion para mostrar el popup
 function show_popup(item) {
     item.style.display = 'flex';
@@ -11,6 +27,7 @@ function show_popup(item) {
 // Funcion para esconder el popup
 function hide_popup(item) {
     item.style.display = 'none';
+    reset_form();
 }
   
 
@@ -34,15 +51,8 @@ console.log(popup);
 button_edit.addEventListener("click", () => show_popup(popup));
 close_popup.addEventListener("click", () => hide_popup(popup));
 
-// Obtener el botón de guardar información
-let buttonSave = document.querySelector(".form__save");
-
 // Código para guardar los parametros del formulario
 let formElement = document.querySelector(".form");
-
-// Botones de input
-let input_name = document.querySelector(".form__field-name");
-let input_about = document.querySelector(".form__field-about");
 
 function handleProfileFormSubmit(evt) {
 
