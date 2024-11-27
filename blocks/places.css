@@ -81,13 +81,6 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 728px) {
-    main {
-        display: flex;
-        justify-content: center; 
-        align-items: center;     
-        width: 100%;      
-    }
-
     .places {
         grid-template-columns: 1fr;
     }
