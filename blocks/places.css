@@ -75,12 +75,23 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 728px) {
+    main {
+        display: flex;
+        justify-content: center; 
+        align-items: center;     
+        width: 100%;      
+    }
+
     .places {
         grid-template-columns: 1fr;
         max-width: 100%;
         row-gap: 20px;
         column-gap: 0px;
-        max-width: 282px;
+        justify-items: center; /* Ensure it is centered */
+    }
+
+    .places__card {
+        width: 282px; /* Keep consistent with the max-width */
     }
 }
 
