@@ -83,25 +83,6 @@ textarea:focus::placeholder {
     opacity: 80%;
 }
 
-.form__closure {
-    display: flex;
-    position: fixed;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    width: 40px;
-    height: 40px;
-    align-self: end;
-    top: 52px;
-    margin-left: 438px;
-    padding: 0;
-}
-
-.form__closure-icon {
-    width: 100%;
-    height: 100%;
-}
-
 @media screen and (min-width: 320px) and (max-width: 728px) {
     .form {
         padding: 0 22px;
@@ -110,13 +91,6 @@ textarea:focus::placeholder {
         font-size: 18px;
         margin-bottom: 76px;
         margin-top: 25px;
-    }
-    .form__closure {
-        top: 45px;
-        width: 26px;
-        height: 26px;
-        align-self: end;
-        margin-left: 255px;
     }
 
     .form__field {

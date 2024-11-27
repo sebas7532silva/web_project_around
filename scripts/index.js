@@ -43,7 +43,7 @@ buttons.forEach(button => {
 // Obtenemos los botones para cerrar y abrir el popup
 let button_edit = document.querySelector(".header__author-edit");
 let popup = document.querySelector(".header__popup");
-let close_popup = document.querySelector(".form__closure");
+let close_popup = document.querySelector(".header__form-closure");
 
 console.log(popup);
 
