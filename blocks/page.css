@@ -1,10 +1,14 @@
+body {
+    background-color: black;
+}
+
 .page {
     background-color: rgba(0, 0, 0, 1);
     background-size: cover;
     width: 100%;
     height: 100%;
     color: #fff;
-    font-family: "My Inter";
+    font-family: "My Inter", sans-serif;
     padding: 0;
     margin: auto;
 }
