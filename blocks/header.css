@@ -93,13 +93,15 @@
     border: 1px solid rgba(255, 255, 255, 1);
     background-color: transparent;
     cursor: pointer;
+    padding: 0;
 }
 
 .header__author-edit-icon {
-    width: 100%;
+    width: 10px;
+    height: 10px;
 }
 
-.header__author-edit:active {
+.header__author-edit:hover {
     opacity: 60%;
 }
 .header__button {
@@ -121,7 +123,7 @@
     height: 22px; 
 }
 
-.header__button:active {
+.header__button:hover {
     opacity: 60%;
 }
 
@@ -182,9 +184,7 @@
         align-self: center;
         margin: 0;
         padding: 0;
-
     }
-
     .header__logo-container {
         max-width: 581px;
         align-self: center;
@@ -217,11 +217,35 @@
         margin-bottom: 36px;
     }
 
+    .header__author-name {
+        font-size: 22px;
+    }
+    
+    .header__author-about {
+        font-size: 14px;
+    }
+
+    .header__author-edit {
+        width: 18px;
+        height: 18px;
+    }
+
+    .header__author-edit-icon {
+        width: 7.5px;
+        height: 7.5px;
+        padding-bottom: 2.5px;
+    }
+
     .header__button {
         align-self: center;
         margin: 0;
         padding: 0;
+        width: 282px;
+    }
 
+    .header__button-symbol {
+        width: 16px; 
+        height: 16px; 
     }
 
     .header__logo-container {
@@ -233,6 +257,12 @@
         margin-bottom: 32px;
         margin-left: 27px;
         align-self: flex-start;
+    }
+
+    .header__form-items {
+        max-width: 282px;
+        width: 100%;
+        height: 322px;
     }
 
 }

@@ -27,9 +27,9 @@
 }
 
 .form__field {
-    color: black;
     max-width: 358px;
     width: 100%;
+    height: 27.26px;
     font-size: 14px;
     font-weight: 400;
     text-align: left;
@@ -37,15 +37,15 @@
     border: none;
     border-bottom: 1px solid rgba(196, 196, 196, 1);
     padding: 0;
+    padding-bottom: 13.26px;
 }
 
 .form__field-name {
-    padding: 0;
     margin-bottom: 30px;
 }
 
 .form__field-about {
-    margin-bottom: 3.5rem;
+    margin-bottom: 48px;
 }
 
 .form__field:focus {
@@ -64,18 +64,24 @@ textarea:focus::placeholder {
 
 
 .form__save {
+    /* Cambiar estas propiedades del botón cuando haya texto */
     color: rgba(196, 196, 196, 1);
     border: 1px solid rgba(196, 196, 196, 1);
+    background-color: transparent;
+    /* Mantener estas propiedades del botón igual */
     max-width: 358px;
     width: 100%;
-    height: 50.15px;
-    background-color: transparent;
-    padding: 0;
-    margin-bottom: 36px;
+    padding: 16px 0px;
+    margin-bottom: 36.51px;
     border-radius: 2px;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
 }
 
-
+.form__save.dynamic:hover {
+    opacity: 80%;
+}
 
 .form__closure {
     display: flex;
@@ -86,11 +92,44 @@ textarea:focus::placeholder {
     width: 40px;
     height: 40px;
     align-self: end;
-    top: 60px;
-    margin-left: 425px;
+    top: 52px;
+    margin-left: 438px;
+    padding: 0;
 }
 
 .form__closure-icon {
     width: 100%;
     height: 100%;
+}
+
+@media screen and (min-width: 320px) and (max-width: 728px) {
+    .form {
+        padding: 0 22px;
+    }
+    .form__title {
+        font-size: 18px;
+        margin-bottom: 76px;
+        margin-top: 25px;
+    }
+    .form__closure {
+        top: 45px;
+        width: 26px;
+        height: 26px;
+        align-self: end;
+        margin-left: 255px;
+    }
+
+    .form__field {
+        height: 26px;
+        padding-bottom: 9px;
+    }
+    .form__save {
+        padding: 14px 0px;
+        margin-bottom: 25px;
+        border-radius: 2px;
+        font-size: 14px;
+    }    
+    .form__field-about {
+        margin-bottom: 46px;
+    }
 }
