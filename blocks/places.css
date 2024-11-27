@@ -69,6 +69,12 @@
 }
 
 @media screen and (min-width: 728px) and (max-width: 1024px) {
+    main {
+        display: flex;
+        justify-content: center; 
+        align-items: center;     
+        width: 100%;      
+    }
     .places {
         grid-template-columns: repeat(2, auto);
     }
@@ -84,14 +90,6 @@
 
     .places {
         grid-template-columns: 1fr;
-        max-width: 100%;
-        row-gap: 20px;
-        column-gap: 0px;
-        justify-items: center; 
-    }
-
-    .places__card {
-        width: 282px; 
     }
 }
 
