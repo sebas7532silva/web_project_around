@@ -80,6 +80,7 @@
         max-width: 100%;
         row-gap: 20px;
         column-gap: 0px;
+        max-width: 282px;
     }
 }
 

@@ -16,12 +16,12 @@
 
 @media screen and (min-width: 728px) and (max-width: 1024px) {
     .footer {
-        width: fit-content;
+        width: 282px;
     }
 }
 
 @media screen and (min-width: 320px) and (max-width: 728px) {
     .footer {
-        width: fit-content;
+        width: 282px;
     }
 }
