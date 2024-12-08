@@ -147,9 +147,6 @@ initialCards.forEach((cardData) => {
     placesContainer.appendChild(cardElement);
     placesContainer.appendChild(cardElementHidden);
 });
-
-// Obtenemos los likes de los botones
-const buttons = document.querySelectorAll(".places__card-button");
   
 // Función para resetear el formulario
 const resetForm = () => {
