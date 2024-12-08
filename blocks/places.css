@@ -12,12 +12,37 @@
     height: 361px;
     background: rgba(255, 255, 255, 1);
     border-radius: 10px;
+    position: relative;
+}
+
+.places__card-trash {
+    display: flex;
+    width: 18px;
+    height: 19.3px;
+    border: none;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    margin-right: 15px;
+    margin-top: 18px;
+    align-self: flex-end;
+}
+
+.places__card-trash-icon {
+    object-fit: contain;
+}
+
+.places__card-trash-icon:hover {
+    opacity: 60%;
 }
 
 .places__card-image {
     width: 100%;
     height: 282px;
     border-radius: 10px 10px 0 0;
+    cursor: pointer;
 }
 
 .places__card-info {
@@ -48,17 +73,12 @@
     height: 19px;
     background: none;
     cursor: pointer;
-    display: inline-block;  /* Ensures button behaves like an inline element */
     position: relative;
   }
 
   .places__card-like {
-    width: 100%;
-    height: 100%;
     object-fit: contain;
   }
-
-
 
 .places__card-button:hover {
     opacity: 50%;
@@ -66,6 +86,65 @@
 
 .places__card-button.active .places__card-like{
     content: url("../images/like_active.svg");
+}
+
+.places__hidden-popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.places__hidden-container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    position: relative;
+}
+
+.places__hidden-image {
+    max-width: 75vw;
+    max-height: 75vh;
+    padding: 0;
+    margin: 0;
+}
+
+.places__hidden-description {
+    object-fit: contain;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+.places__card-closure {
+    position: absolute;
+    top: -45px;
+    right: -45px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+    align-self: end;
+    padding: 0;
+
+}
+
+.places__card-closure-icon {
+    width: 100%;
+    height: 100%;
+    transform: rotate(45deg);
 }
 
 @media screen and (min-width: 728px) and (max-width: 1024px) {
@@ -84,5 +163,9 @@
     .places {
         grid-template-columns: 1fr;
     }
-}
 
+    .places__card-closure {
+        width: 26px;
+        height: 26px;
+    }
+}

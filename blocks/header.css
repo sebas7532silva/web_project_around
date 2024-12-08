@@ -66,7 +66,6 @@
     align-self: center;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden; 
 }
 
 .header__author-about {
@@ -79,7 +78,6 @@
     max-width: fit-content;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
 }
 
 .header__author-edit {
@@ -135,7 +133,6 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 2;
-    display: flex; 
     justify-content: center; 
     align-items: center; 
     display: none;
