@@ -39,7 +39,6 @@ const initialCards = [
     }
 ];
 
-
 // Cntenedor de lugares, sección lugares
 const placesContainer = document.querySelector(".places");
 
@@ -63,7 +62,7 @@ function createCard(cardData) {
     img.classList.add("places__card-image");
     img.src = cardData.link;
     img.alt = `${cardData.name}`;
-
+    
     const cardInfo = document.createElement("div");
     cardInfo.classList.add("places__card-info");
 
@@ -89,10 +88,16 @@ function createCard(cardData) {
     card.appendChild(img);
     card.appendChild(cardInfo);
 
-    return card;
-}
+    // Se añaden las funciones para la tarjeta nueva
+    trash.addEventListener('click', function() {
+        // Remove the card
+        card.remove();
+    });
 
-function createHiddenCard(cardData) {
+    button.addEventListener("click", () => {
+        button.classList.toggle("active");
+    });
+
     const cardHidden = document.createElement("div");
     cardHidden.classList.add("places__hidden-popup");
 
@@ -109,7 +114,6 @@ function createHiddenCard(cardData) {
 
     closeHidden.appendChild(closeHiddenIcon);
 
-
     const hiddenImage = document.createElement("img");
     hiddenImage.src = cardData.link;
     hiddenImage.alt = "Imagen de " + cardData.name;
@@ -125,13 +129,21 @@ function createHiddenCard(cardData) {
 
     cardHidden.appendChild(hiddenContainer);
 
-    return cardHidden;
+    img.addEventListener("click", () => {
+        cardHidden.style.display = "flex";
+    });
+
+    // Cerrar el popup correspondiente
+    closeHidden.addEventListener("click", () => {
+      cardHidden.style.display = "none";
+    });
+
+    return [card, cardHidden];
 }
 
 // Añadimos las tarjetas al DOM
 initialCards.forEach((cardData) => {
-    const cardElement = createCard(cardData);
-    const cardElementHidden = createHiddenCard(cardData);
+    const [cardElement, cardElementHidden] = createCard(cardData);
     placesContainer.appendChild(cardElement);
     placesContainer.appendChild(cardElementHidden);
 });
@@ -139,12 +151,6 @@ initialCards.forEach((cardData) => {
 // Obtenemos los likes de los botones
 const buttons = document.querySelectorAll(".places__card-button");
   
-
-// Función para alternar la clase "active"
-const toggleActive = (event) => {
-    event.currentTarget.classList.toggle("active");
-};
-
 // Función para resetear el formulario
 const resetForm = () => {
     inputName.value = '';
@@ -202,8 +208,9 @@ const handleFormSubmit = (event, type) => {
             name: placeName,
             link: placeUrl
         }
-        const cardElement = createCard(newCard);
+        const [cardElement, cardElementHidden] = createCard(newCard);
         placesContainer.appendChild(cardElement);
+        placesContainer.appendChild(cardElementHidden);
     }
 
     // Limpiar formulario y cerrar popup
@@ -220,20 +227,17 @@ const updateButtonStyle = () => {
     buttonSave.classList.toggle("dynamic", isFilled);
 };
 
-// Agregar listeners a los botones de "like"
-buttons.forEach((button) => {
-    button.addEventListener("click", toggleActive);
-});
-
 // Agregar listeners para mostrar y ocultar el popup
 buttonEdit.addEventListener("click", () => {
     currentFormType = "editAuthor"; 
     showPopup(popup, currentFormType); 
 });
+
 buttonEditPlaces.addEventListener("click", () => {
     currentFormType = "placesAdd";
     showPopup(popup, currentFormType);
 });
+
 closePopup.addEventListener("click", () => hidePopup(popup));
 
 // Agregar listener al formulario para manejar el submit
@@ -245,35 +249,3 @@ formElement.addEventListener("submit", (event) => {
 [inputName, inputAbout].forEach((input) => {
     input.addEventListener("input", updateButtonStyle);
 });
-
-// Obtenemos los pop ups escondidos y las imagenes
-const cardImages = document.querySelectorAll(".places__card-image");
-const popups = document.querySelectorAll(".places__hidden-popup");
-
-// Borrar la tarjeta si necesario
-const trashButtons = document.querySelectorAll('.places__card-trash');
-
-// Borrar la tarjeta si es necesario
-trashButtons.forEach(button => {
-  button.addEventListener('click', function() {
-    // Se encuentra el padre más cercano
-    const card = button.closest('.places__card');
-    card.remove();
-  });
-});
-
-// Agregar listeners a las images para mostrarla en pantalla completa
-cardImages.forEach((image, index) => {
-    image.addEventListener("click", () => {
-      // Abrir el popup correspondiente
-      popups[index].style.display = "flex";
-    });
-  });
-
-// Cerrar el popup correspondiente
-popups.forEach((popup) => {
-    const closeButton = popup.querySelector(".places__card-closure");
-    closeButton.addEventListener("click", () => {
-      popup.style.display = "none";
-    });
-  });
