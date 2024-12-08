@@ -73,6 +73,10 @@ function createCard(cardData) {
     const button = document.createElement("button");
     button.classList.add("places__card-button");
 
+    button.addEventListener("click", () => {
+        button.classList.toggle("active");
+    });
+
     const likeImg = document.createElement("img");
     likeImg.src = "./images/like.svg";
     likeImg.alt = "Like";
@@ -94,9 +98,6 @@ function createCard(cardData) {
         card.remove();
     });
 
-    button.addEventListener("click", () => {
-        button.classList.toggle("active");
-    });
 
     const cardHidden = document.createElement("div");
     cardHidden.classList.add("places__hidden-popup");
