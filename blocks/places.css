@@ -167,5 +167,7 @@
     .places__card-closure {
         width: 26px;
         height: 26px;
+        top: -30px;
+        right: -30px;
     }
 }
