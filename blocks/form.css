@@ -83,6 +83,40 @@ textarea:focus::placeholder {
     opacity: 80%;
 }
 
+.form__input-error-one { 
+    width: 358px;
+    position: absolute; 
+    color: red; 
+    font-size: 12px;
+    font-weight: 400;
+    text-align: left;
+    left: 36px;
+    top: 149px;
+    padding: 0;
+    margin: 0;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.form__input-error-two { 
+    width: 358px;
+    position: absolute; 
+    color: red; 
+    font-size: 12px;
+    font-weight: 400;
+    text-align: left;
+    left: 36px;
+    top: 209px;
+    padding: 0;
+    margin: 0;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 @media screen and (min-width: 320px) and (max-width: 728px) {
     .form {
         padding: 0 22px;
@@ -105,5 +139,16 @@ textarea:focus::placeholder {
     }    
     .form__field-about {
         margin-bottom: 46px;
+    }
+    .form__input-error-one { 
+        width: 238px;
+        left: 22px;
+        top: 151px;
+    }
+    
+    .form__input-error-two { 
+        width: 238px;
+        left: 22px;
+        top: 209px;
     }
 }

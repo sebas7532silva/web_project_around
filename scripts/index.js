@@ -149,14 +149,6 @@ initialCards.forEach((cardData) => {
     placesContainer.appendChild(cardElementHidden);
 });
   
-// Función para resetear el formulario
-const resetForm = () => {
-    inputName.value = '';
-    inputAbout.value = '';
-    buttonSave.style.color = "rgba(196, 196, 196, 1)";
-    buttonSave.style.border = "1px solid rgba(196, 196, 196, 1)";
-    buttonSave.style.backgroundColor = "transparent";
-};
 
 // Función para mostrar un popup
 const showPopup = (element, type) => {
@@ -164,10 +156,15 @@ const showPopup = (element, type) => {
 
     if (type === "editAuthor") {
         // Configuración para editar el Autor
-        element.querySelector(".form__field-name").placeholder = "Editar perfil";
-        element.querySelector(".form__field-about").placeholder = "Nombre";
-        element.querySelector(".form__title").textContent = "Acerca de mí";
+        element.querySelector(".form__field-name").placeholder = "Nombre";
+        element.querySelector(".form__field-about").placeholder = "Acerca de mí";
+        element.querySelector(".form__title").textContent = "Editar perfil";
         element.querySelector(".form__save").textContent = "Guardar";
+        inputAbout.type = "text";
+        inputName.maxLength = 40;
+        inputName.minLength = 2;
+        inputAbout.maxLength = 200;
+        inputAbout.minLength = 2;
 
     } else if (type === "placesAdd") {
         // Configuración para editar los lugares
@@ -175,18 +172,52 @@ const showPopup = (element, type) => {
         element.querySelector(".form__field-about").placeholder = "Enlace a la imagen";
         element.querySelector(".form__title").textContent = "Nuevo lugar";
         element.querySelector(".form__save").textContent = "Crear";
+        inputName.maxLength = 30;
+        inputName.minLength = 2;
+        inputAbout.type = "url";
+        inputAbout.removeAttribute('minlength'); // Remove the minlength restriction
+        inputAbout.removeAttribute('maxlength'); // Remove the maxlength restriction
     }
+};
+
+// Función para actualizar el estilo del botón de guardar
+const updateButtonStyle = () => {
+    const isValid = formElement.checkValidity(); 
+    buttonSave.style.color = isValid ? "white" : "";
+    buttonSave.style.border = isValid ? "none" : "1px solid rgba(196, 196, 196, 1)";
+    buttonSave.style.backgroundColor = isValid ? "black" : "transparent";
+    buttonSave.classList.toggle("dynamic", isValid);
+    buttonSave.disabled = !isValid;
 };
 
 // Función para esconder un popup
 const hidePopup = (element) => {
     element.style.display = 'none';
-    resetForm();
 };
+
+const showError = (inputElement, errorMessage) => {
+    const errorElement = inputElement.nextElementSibling;
+    errorElement.textContent = errorMessage;
+    inputElement.style.borderBottom  = "1px solid rgba(255, 0, 0, 1)";
+  };
+
+const hideError = (inputElement) => {
+    const errorElement = inputElement.nextElementSibling;
+    errorElement.textContent = "";
+    inputElement.style.borderBottom  = "1px solid rgba(196, 196, 196, 1)";
+};
+
+const checkInputValidity = (inputElement) => {
+    if (!inputElement.validity.valid) {
+      showError(inputElement, inputElement.validationMessage);
+    } else {
+      hideError(inputElement);
+    }
+  };
+
 
 // Función para manejar el envío del formulario
 const handleFormSubmit = (event, type) => {
-    event.preventDefault();
 
     if (type === "editAuthor") {
         const name = inputName.value.trim();
@@ -210,19 +241,6 @@ const handleFormSubmit = (event, type) => {
         placesContainer.appendChild(cardElement);
         placesContainer.appendChild(cardElementHidden);
     }
-
-    // Limpiar formulario y cerrar popup
-    resetForm();
-    hidePopup(popup);
-};
-
-// Función para actualizar el estilo del botón de guardar
-const updateButtonStyle = () => {
-    const isFilled = inputName.value.trim() || inputAbout.value.trim();
-    buttonSave.style.color = isFilled ? "white" : "";
-    buttonSave.style.border = isFilled ? "none" : "1px solid rgba(196, 196, 196, 1)";
-    buttonSave.style.backgroundColor = isFilled ? "black" : "transparent";
-    buttonSave.classList.toggle("dynamic", isFilled);
 };
 
 // Agregar listeners para mostrar y ocultar el popup
@@ -236,14 +254,52 @@ buttonEditPlaces.addEventListener("click", () => {
     showPopup(popup, currentFormType);
 });
 
-closePopup.addEventListener("click", () => hidePopup(popup));
+// Agregar listener de cerrar formulario si se da click en el icono de cerrar
+closePopup.addEventListener("click", () => {
+    hidePopup(popup);
+    formElement.reset();
+});
+
+// Agregar listener de cerrar el formulario si se da click fuera 
+popup.addEventListener("click", (evt) => { 
+    if (evt.target === popup) {
+        hidePopup(popup);
+        formElement.reset();
+    }
+});
+
+// Agregar listener de cerrar el formulario con ESC
+document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      hidePopup(popup);
+      formElement.reset();
+    }
+  });
+
+const cardPopups = document.querySelectorAll(".places__hidden-popup");
+
+// Agregar listener de cerrar el formulario con ESC
+document.addEventListener('keydown', (evt) => {
+    cardPopups.forEach((popupElement) => {
+        if (evt.key === 'Escape') {
+            hidePopup(popupElement);
+          }
+    });
+  });
+
 
 // Agregar listener al formulario para manejar el submit
 formElement.addEventListener("submit", (event) => {
     handleFormSubmit(event, currentFormType);
+    formElement.reset();
+    updateButtonStyle();
 });
 
-// Agregar listeners a los inputs para actualizar el botón de guardar
-[inputName, inputAbout].forEach((input) => {
-    input.addEventListener("input", updateButtonStyle);
+cardPopups.forEach((popupElement) => {
+    popupElement.addEventListener("click", (evt) => { 
+        if (evt.target === popupElement) {
+            hidePopup(popupElement);
+        }
+    });
 });
+
