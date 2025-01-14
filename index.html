@@ -39,32 +39,43 @@
                              alt="Simbolo +" />
                     </button>     
                 </div>
-                <div id ="form_container" class="header__popup">
-                    <div class="header__form-items">
-                        <button class="header__form-closure">
+            </header>            
+            <main class="content">
+                <div id ="authorForm" class="popup">
+                    <div class="popup__container">
+                        <button class="popup__close">
                             <img src="./images/close_icon.svg"
-                                 class="header__form-closure-icon"
-                                 alt="Close" />
+                                    class="popup__close-icon"
+                                    alt="Close" />
                         </button>
-                        <form id="form"
-                              class="form">
+                        <form id="form-author"
+                                class="form"
+                                novalidate>
                             <h2 class="form__title">
                                 Editar perfil
                             </h2>
-                            <input type="text" 
-                                   id="nombre" 
-                                   name="nombre"
-                                   class="form__field form__field-name"
-                                   placeholder="Nombre"
-                                   required>
-                            <span class="form__input-error-one"></span>
-                            <input type="text" 
-                                   id="about" 
-                                   name="about"
-                                   class="form__field form__field-about"
-                                   placeholder="Acerca de mí"
-                                   required>
-                            <span class="form__input-error-two"></span>
+                            <label class="form__field">
+                                <input type="text" 
+                                    id="name-input" 
+                                    name="nombre"
+                                    class="form__input"
+                                    placeholder="Nombre"
+                                    minlength="2"
+                                    maxlength="40"
+                                    required>
+                                <span class="form__input-error" id="name-input-error"></span>
+                            </label>
+                            <label class="form__field">
+                                <input type="text" 
+                                        id="about-input" 
+                                        name="about"
+                                        class="form__input"
+                                        placeholder="Acerca de mí"
+                                        minlength="2"
+                                        maxlength="200"
+                                        required>
+                                <span class="form__input-error" id="about-input-error"></span>
+                            </label>
                             <button type="submit" 
                             value="Guardar"
                             class="form__save">
@@ -72,9 +83,48 @@
                             </button>
                         </form>
                     </div>
-                </div> 
-            </header>
-            <main class="content">
+                </div>
+                <div id ="placesForm" class="popup">
+                    <div class="popup__container">
+                        <button class="popup__close">
+                            <img src="./images/close_icon.svg"
+                                    class="popup__close-icon"
+                                    alt="Close" />
+                        </button>
+                        <form id="form-places"
+                                class="form"
+                                novalidate>
+                            <h2 class="form__title">
+                                Nuevo Lugar
+                            </h2>
+                            <label class="form__field">
+                                <input type="text" 
+                                    id="title-input" 
+                                    name="titulo"
+                                    class="form__input"
+                                    placeholder="Título"
+                                    minlength="2"
+                                    maxlength="30"
+                                    required>
+                                <span class="form__input-error" id="title-input-error"></span>
+                            </label>
+                            <label class="form__field">
+                                <input type="url" 
+                                    id="url-input" 
+                                    name="url"
+                                    class="form__input"
+                                    placeholder="Enlace a la imagen"
+                                    required>
+                                <span class="form__input-error" id="url-input-error"></span>
+                            </label>
+                            <button type="submit" 
+                            value="Guardar"
+                            class="form__save">
+                            Guardar
+                            </button>
+                        </form>
+                    </div>
+                </div>
                 <section class="places">
                 </section>
             </main>
