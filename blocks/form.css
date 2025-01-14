@@ -11,6 +11,7 @@
     padding-left: 35px;
     border-radius: 10px;
     box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+    padding-bottom: 20px;
 }
 
 .form__title {
@@ -93,16 +94,15 @@ textarea:focus::placeholder {
 }
 
 .form__input-error {
-    position: absolute; 
-    width: 358px;
+    position: relative; 
     color: red; 
     font-size: 12px;
     font-weight: 400;
     text-align: left;
-    display: flex;
+    display: block;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: hidden;   
     margin-top: 6px;
 }
 
@@ -116,28 +116,20 @@ textarea:focus::placeholder {
         margin-top: 25px;
     }
 
-    .form__field {
-        height: 26px;
-        padding-bottom: 9px;
-    }
     .form__save {
         padding: 14px 0px;
         margin-bottom: 25px;
         border-radius: 2px;
         font-size: 14px;
-    }    
-    .form__field-about {
-        margin-bottom: 46px;
+    }  
+      
+    .form__field {
+        width: 282px;
+        margin-bottom: 20px;
     }
-    .form__input-error-one { 
-        width: 238px;
-        left: 22px;
-        top: 151px;
-    }
-    
-    .form__input-error-two { 
-        width: 238px;
-        left: 22px;
-        top: 209px;
+
+    .form__input-error { 
+        width: 282px;
+        position: absolute;
     }
 }

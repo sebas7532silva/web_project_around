@@ -91,7 +91,4 @@ const enableValidation = ({
     inputErrorClass: "form__input_type_error",
     errorClass: "form__input-error"
   });
-
-
-  console.log(document.querySelector("#title-input"));
   

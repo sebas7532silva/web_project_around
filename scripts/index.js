@@ -1,14 +1,12 @@
 // Selección de elementos reutilizables
-const inputName = document.querySelector(".form__field-name");
-const inputAbout = document.querySelector(".form__field-about");
-const buttonSave = document.querySelector(".form__save");
 const popups = document.querySelectorAll(".popup");
 const buttonEdit = document.querySelector(".header__author-edit");
 const buttonEditPlaces = document.querySelector(".header__button");
 const closePopups = document.querySelectorAll(".popup__close-icon");
 const forms = document.querySelectorAll("form");
-const currentName = document.querySelector(".header__author-name");
-const currentJob = document.querySelector(".header__author-about");
+const authorForm = document.querySelector("#form-author");
+const authorInputs = authorForm.querySelectorAll(".form__input");
+const placesForm = document.querySelector("#form-places");
 
 // Crear las tarjetas iniciales
 
@@ -169,6 +167,86 @@ buttonEditPlaces.addEventListener("click", () => {
     showPopup(document.querySelector("#placesForm")); 
 });
 
+// Función para manejar el envío del formulario author
+const updateAuthor = (form) => {
+    const inputName = form.querySelector("#name-input").value.trim();
+    const inputAbout = form.querySelector("#about-input").value.trim();
+
+    const currentName = document.querySelector(".header__author-name");
+    const currentAbout = document.querySelector(".header__author-about");
+
+    currentName.textContent = inputName;
+    currentAbout.textContent = inputAbout;
+};
+
+const addCard = (form) => {
+    const inputTitle = form.querySelector("#title-input").value.trim();
+    const inputUrl = form.querySelector("#url-input").value.trim();
+
+    // Creamos el lugar
+    const newCard = {
+        name: inputTitle,
+        link: inputUrl
+    }
+
+    const placesContainer = document.querySelector(".places");
+    const [cardElement, cardElementHidden] = createCard(newCard);
+        placesContainer.appendChild(cardElement);
+        placesContainer.appendChild(cardElementHidden);
+};
+
+authorForm.addEventListener("submit", (evt) => {
+    evt.preventDefault();
+
+    // Aquí procesas los datos, por ejemplo, llamando a updateAuthor
+    updateAuthor(authorForm);
+
+    // Reinicia el formulario
+    authorForm.reset();
+
+    // Obtén todos los inputs y el botón del formulario
+    const inputList = Array.from(authorForm.querySelectorAll(".form__input"));
+    const submitButton = authorForm.querySelector(".form__save");
+
+    // Desactiva el botón
+    if (submitButton) {
+        submitButton.classList.add("form__save_inactive");
+        submitButton.disabled = true;
+    }
+
+    // Limpia los errores de validación, si aplica
+    inputList.forEach((inputElement) => {
+        const errorElement = authorForm.querySelector(`#${inputElement.id}-error`);
+        if (errorElement) {
+            inputElement.classList.remove("form__input_type_error");
+            errorElement.textContent = "";
+            errorElement.classList.remove("form__input-error");
+        }
+    });
+
+    hidePopup(document.querySelector(".popup_opened"));
+});
+
+console.log(placesForm);
+
+placesForm.addEventListener("submit", (evt) =>{
+    evt.preventDefault();
+    addCard(placesForm);
+
+    placesForm.reset();
+
+    const submitButton = placesForm.querySelector(".form__save");
+
+    // Desactiva el botón
+    if (submitButton) {
+        submitButton.classList.add("form__save_inactive");
+        submitButton.disabled = true;
+    }
+
+    hidePopup(document.querySelector(".popup_opened"));
+
+});
+
 // Agregar listener de cerrar formulario si se da click en el icono de cerrar
 closePopups.forEach((closeIcon) => {
     closeIcon.addEventListener("click", () => {
@@ -184,7 +262,7 @@ popups.forEach((popup) => {
             
         }
     })
-})
+});
 
 popups.forEach((popup) => {
     document.addEventListener("keydown", (evt) => {
@@ -192,7 +270,7 @@ popups.forEach((popup) => {
             hidePopup(popup);
         }
     })
-})
+});
 
 const cardPopups = document.querySelectorAll(".places__hidden-popup");
 
