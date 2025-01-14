@@ -27,37 +27,38 @@
 }
 
 .form__field {
-    max-width: 358px;
+    color: rgba(196, 196, 196, 1);
+    width: 358px;
+    background-color: transparent;
+    margin-bottom: 20px;
+}
+
+.form__input {
     width: 100%;
     height: 27.26px;
     font-size: 14px;
     font-weight: 400;
     text-align: left;
-    background-color: transparent;
     border: none;
     border-bottom: 1px solid rgba(196, 196, 196, 1);
     padding: 0;
-    padding-bottom: 13.26px;
 }
 
-.form__field-name {
-    margin-bottom: 30px;
-}
+.form__input_type_error {
+    border-bottom: 1px solid #f00;
+  }
 
-.form__field-about {
-    margin-bottom: 48px;
-}
 
-.form__field:focus {
+.form__input:focus {
     outline: none;
 }
 
-.form__field::placeholder,
+.form__input::placeholder,
 textarea::placeholder {
     color: rgba(196, 196, 196, 1);
 }
 
-.form__field:focus::placeholder,
+.form__input:focus::placeholder,
 textarea:focus::placeholder {
     color: rgba(196, 196, 196, 1);
 }
@@ -65,56 +66,44 @@ textarea:focus::placeholder {
 
 .form__save {
     /* Cambiar estas propiedades del botón cuando haya texto */
-    color: rgba(196, 196, 196, 1);
-    border: 1px solid rgba(196, 196, 196, 1);
-    background-color: transparent;
+    color: white;
+    border: none;
+    background-color: black;
     /* Mantener estas propiedades del botón igual */
     max-width: 358px;
     width: 100%;
     padding: 16px 0px;
     margin-bottom: 36.51px;
+    margin-top: 22px;
     border-radius: 2px;
     font-size: 18px;
     font-weight: 400;
     cursor: pointer;
 }
 
+.form__save_inactive {
+    color: rgba(196, 196, 196, 1);
+    border: 1px solid rgba(196, 196, 196, 1);
+    background-color: transparent;
+    
+}
+
 .form__save.dynamic:hover {
     opacity: 80%;
 }
 
-.form__input-error-one { 
-    width: 358px;
+.form__input-error {
     position: absolute; 
+    width: 358px;
     color: red; 
     font-size: 12px;
     font-weight: 400;
     text-align: left;
-    left: 36px;
-    top: 149px;
-    padding: 0;
-    margin: 0;
-    display: block;
+    display: flex;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-}
-
-.form__input-error-two { 
-    width: 358px;
-    position: absolute; 
-    color: red; 
-    font-size: 12px;
-    font-weight: 400;
-    text-align: left;
-    left: 36px;
-    top: 209px;
-    padding: 0;
-    margin: 0;
-    display: block;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    margin-top: 6px;
 }
 
 @media screen and (min-width: 320px) and (max-width: 728px) {
