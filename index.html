@@ -126,6 +126,37 @@
                     </div>
                 </div>
                 <section class="places">
+                    <template class="card-template">
+                        <div class="places__card">
+                            <button class="places__card-trash">
+                                <img class="places__card-trash-icon" src="./images/trash.svg" alt="Trash">
+                            </button>
+                            <img class="places__card-image" 
+                                 src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg" 
+                                 alt="Valle de Yosemite">
+                            <div class="places__card-info">
+                                <p class="places__card-title">Valle de Yosemite</p>
+                                <button class="places__card-button">
+                                    <img src="./images/like.svg" 
+                                            alt="Like" 
+                                            class="places__card-like">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="places__hidden-popup">
+                            <div class="places__hidden-container">
+                                <button class="places__card-closure">
+                                    <img src="./images/logo_plus.svg" 
+                                            alt="Simbolo +" 
+                                            class="places__card-closure-icon">
+                                </button>
+                                <img src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg" 
+                                        alt="Imagen de Valle de Yosemite" 
+                                        class="places__hidden-image">
+                                <p class="places__hidden-description">Valle de Yosemite</p>
+                            </div>
+                        </div>
+                    </template>
                 </section>
             </main>
             <footer class="footer">
@@ -134,7 +165,7 @@
                 </p>
             </footer>
         </div>
-        <script src="./scripts/validate.js"></script>
-        <script src="./scripts/index.js"></script>
+        <script src="./scripts/index.js" type="module"></script>
+        <script src="./scripts/utils.js"></script>
     </body>
 </html>
