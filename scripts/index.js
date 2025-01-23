@@ -54,8 +54,3 @@ initialCards.forEach((cardData) => {
         cardData.link, 
         ".card-template").generateCard());
 });
-
-
-
-
-
