@@ -26,7 +26,8 @@ const addCard = (form) => {
     const inputUrl = form.querySelector("#url-input").value.trim();
 
     const newCard = new Card(inputTitle, inputUrl, ".card-template");
-    document.querySelector(".places").append(newCard.generateCard());
+    const placesContainer = document.querySelector(".places");
+    placesContainer.insertBefore(newCard.generateCard(), placesContainer.firstChild);
 };
 
 // Función para esconder un popup
