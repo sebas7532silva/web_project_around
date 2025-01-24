@@ -1,3 +1,5 @@
+import Card from './Card.js'
+
 const popups = document.querySelectorAll(".popup");
 const closePopups = document.querySelectorAll(".popup__close-icon");
 const authorForm = document.querySelector("#form-author");
@@ -16,6 +18,15 @@ const updateAuthor = (form) => {
 
     currentName.textContent = inputName;
     currentAbout.textContent = inputAbout;
+};
+
+// Función para manejar el envío del formulario author
+const addCard = (form) => {
+    const inputTitle = form.querySelector("#title-input").value.trim();
+    const inputUrl = form.querySelector("#url-input").value.trim();
+
+    const newCard = new Card(inputTitle, inputUrl, ".card-template");
+    document.querySelector(".places").append(newCard.generateCard());
 };
 
 // Función para esconder un popup

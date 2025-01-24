@@ -14,7 +14,6 @@ export default class Card {
     }
 
     _handleOpenPopup() {
-        console.log("hola");
         this._popup.classList.add('popup_opened');
         document.addEventListener('keydown', this._handleEscapeKey);
     }
