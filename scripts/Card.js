@@ -1,97 +1,57 @@
 export default class Card {
-    constructor(text, url, selector) {
-        this._text = text;
-        this._url = url;
-        this._selector = selector;
+    constructor(name, link, templateSelector, handleCardClick) {
+        this._name = name;
+        this._link = link;
+        this._templateSelector = templateSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
-        const cardElement = document
-            .querySelector(this._selector)
-            .content
-            .cloneNode(true);
-        return cardElement;
+        const templateContent = document
+            .querySelector(this._templateSelector)
+            .content;
+
+        const cardElement = templateContent.querySelector('.places__card').cloneNode(true);
+        const popupElement = templateContent.querySelector('.places__hidden-popup').cloneNode(true);
+
+        return { cardElement, popupElement };
     }
 
-    _handleOpenPopup() {
-        this._popup.classList.add('popup_opened');
-        document.addEventListener('keydown', this._handleEscapeKey);
-    }
-    
-    _handleClosePopup() {
-        this._popup.classList.remove('popup_opened');
-        document.removeEventListener('keydown', this._handleEscapeKey);
-    }
-    
-    // Function to handle the Escape key press
-    _handleEscapeKey = (evt) => {
-        if (evt.key === 'Escape') {
-            if (this._popup.classList.contains('popup_opened')) {
-                this._handleClosePopup();
-            }
-        }
-    };
+    generateCard() {
+        const { cardElement, popupElement } = this._getTemplate();
+        this._element = cardElement;
+        this._popupElement = popupElement;
 
-    _trash() {
-        const trash = this._card.querySelector(".places__card-trash");
-        trash.addEventListener("click", () => {
-            this._card.remove(); // Remove the card
-            this._popup.remove(); // Remove the hidden popup
-        });
-    }
+        this._setEventListeners();
 
-    _like() {
-        const like = this._card.querySelector(".places__card-button");
-        like.addEventListener("click", () => {
-            like.classList.toggle("active");
-        });
+        this._element.querySelector('.places__card-title').textContent = this._name;
+        const cardImage = this._element.querySelector('.places__card-image');
+        cardImage.src = this._link;
+        cardImage.alt = this._name;
+
+        return this._element;
     }
 
     _setEventListeners() {
-        // Handle popup open/close
-        this._card.querySelector(".places__card-image")
-                  .addEventListener("click", () => {
-            this._handleOpenPopup();
-        });
-        this._popup.querySelector(".places__card-closure").addEventListener("click", () => {
-            this._handleClosePopup();
+        this._element.querySelector('.places__card-image').addEventListener('click', () => {
+            this._handleCardClick(this._name, this._link, this._popupElement);
         });
 
-
-        this._popup.addEventListener("click", (evt) => { 
-            if (evt.target === this._popup) {
-                this._handleClosePopup();
-            }
-        });
         this._trash();
         this._like();
     }
 
-    generateCard() {
-        const template = this._getTemplate();
+    _trash() {
+        const trash = this._element.querySelector(".places__card-trash");
+        trash.addEventListener("click", () => {
+            this._element.remove();
+        });
+    }
 
-        // Separate the card and popup elements
-        this._card = template.querySelector(".places__card");
-        this._popup = template.querySelector(".places__hidden-popup");
-
-        // Update card details
-        this._card.querySelector(".places__card-image").src = this._url;
-        this._card.querySelector(".places__card-image").alt = `Imagen de ${this._text}`;
-        this._card.querySelector(".places__card-title").textContent = this._text;
-
-        // Update popup details
-        this._popup.querySelector(".places__hidden-image").src = this._url;
-        this._popup.querySelector(".places__hidden-image").alt = `Imagen de ${this._text}`;
-        this._popup.querySelector(".places__hidden-description").textContent = this._text;
-
-        // Add event listeners
-        this._setEventListeners();
-
-        // Return a fragment containing both elements
-        const fragment = document.createDocumentFragment();
-        fragment.append(this._card, this._popup);
-
-        return fragment;
+    _like() {
+        const like = this._element.querySelector(".places__card-button");
+        like.addEventListener("click", () => {
+            like.classList.toggle("active");
+        });
     }
 }
-

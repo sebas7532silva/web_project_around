@@ -1,18 +1,12 @@
 import Card from './Card.js'
 import FormValidator from './FormValidator.js'
+import PopupWithForm from './PopupWithForm.js';
 
-// Selección de elementos reutilizables
-const forms = document.querySelectorAll("form");
 
-const placesContainer = document.querySelector(".places");
-const configs = {
-    formSelector: ".form",
-    inputSelector: ".form__input",
-    submitButtonSelector: ".form__save",
-    inactiveButtonClass: "form__save_inactive",
-    inputErrorClass: "form__input_type_error",
-    errorClass: "form__input-error"
-  };
+import { handleCardClick, handleAuthorFormSubmit, 
+    handlePlacesFormSubmit, showPopup, forms, 
+    buttonEdit, buttonEditPlaces, placesContainer, configs} from './utils.js'; 
+
 
 // Crear las tarjetas iniciales
 
@@ -48,9 +42,30 @@ forms.forEach((formElement) => {
     formValidator.enableValidation();
 })
 
-// Añadimos las tarjetas al DOM
+const popupWithForm = new PopupWithForm('#authorForm', handleAuthorFormSubmit);
+popupWithForm.setEventListeners();
+
+const popupPlacesForm = new PopupWithForm('#placesForm', handlePlacesFormSubmit);
+popupPlacesForm.setEventListeners();
+
+
+
 initialCards.forEach((cardData) => {
-    placesContainer.append(new Card(cardData.name, 
-        cardData.link, 
-        ".card-template").generateCard());
+    const newCard = new Card(cardData.name, 
+                             cardData.link, 
+                             ".card-template", 
+                             handleCardClick); 
+
+    const cardElement= newCard.generateCard();
+
+    placesContainer.append(cardElement);
+});
+
+// Agregar listeners para mostrar y ocultar el popup
+buttonEdit.addEventListener("click", () => {
+    showPopup(popupWithForm); 
+});
+
+buttonEditPlaces.addEventListener("click", () => {
+    showPopup(popupPlacesForm); 
 });
