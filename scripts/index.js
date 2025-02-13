@@ -1,71 +1,93 @@
-import Card from './Card.js'
-import FormValidator from './FormValidator.js'
+// Importaciones
+import Card from './Card.js';
+import Section from './Section.js';
+import FormValidator from './FormValidator.js';
 import PopupWithForm from './PopupWithForm.js';
+import UserInfo from './UserInfo.js';
+import PopupWithImage from './PopupWithImage.js';
 
+import { forms, buttonEdit, buttonEditPlaces, configs, initialCards } from './utils.js';
 
-import { handleCardClick, handleAuthorFormSubmit, 
-    handlePlacesFormSubmit, showPopup, forms, 
-    buttonEdit, buttonEditPlaces, placesContainer, configs} from './utils.js'; 
+// ===============================
+// Configuración de instancias
+// ===============================
 
+// Instancia de UserInfo para manejar la información del usuario
+const userInfo = new UserInfo({
+    nameSelector: ".header__author-name",
+    aboutSelector: ".header__author-about"
+});
 
-// Crear las tarjetas iniciales
+// Instancia de PopupWithForm para editar información del usuario
+const popupWithForm = new PopupWithForm('#authorForm', (inputValues) => {
+    userInfo.setUserInfo(inputValues);
+});
+popupWithForm.setEventListeners();
 
-const initialCards = [
-    {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
-    },
-    {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
-    },
-    {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
-    },
-    {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
-    },
-    {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
-    },
-    {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
+// Instancia de PopupWithForm para agregar nuevas tarjetas
+const popupPlacesForm = new PopupWithForm('#placesForm', (inputValues) => {
+    const newCard = new Card(
+        inputValues.titulo, 
+        inputValues.url, 
+        ".card-template", 
+        handleCardClick
+    );
+    const element = newCard.generateCard();
+    section.addItem(element, true); // Agregar al inicio
+});
+popupPlacesForm.setEventListeners();
+
+// Instancia de PopupWithImage para mostrar la imagen en un popup
+const popupWithImage = new PopupWithImage('.places__hidden-popup');
+popupWithImage.setEventListeners();
+
+// ===============================
+// Función para manejar clics en tarjetas
+// ===============================
+const handleCardClick = (title, url) => {
+    popupWithImage.open({
+        src: url,
+        alt: title,
+        description: title
+    });
+};
+
+// ===============================
+// Configuración de la sección de tarjetas
+// ===============================
+const section = new Section({
+    items: initialCards,
+    renderer: (cardData) => {
+        const newCard = new Card(
+            cardData.name, 
+            cardData.link, 
+            ".card-template", 
+            handleCardClick
+        );
+        const element = newCard.generateCard();
+        section.addItem(element);
     }
-];
+}, ".places");
 
+// Renderizar tarjetas iniciales
+section.renderer();
+
+// ===============================
+// Validación de formularios
+// ===============================
 forms.forEach((formElement) => {
     const formValidator = new FormValidator(configs, formElement);
     formValidator.enableValidation();
-})
-
-const popupWithForm = new PopupWithForm('#authorForm', handleAuthorFormSubmit);
-popupWithForm.setEventListeners();
-
-const popupPlacesForm = new PopupWithForm('#placesForm', handlePlacesFormSubmit);
-popupPlacesForm.setEventListeners();
-
-
-
-initialCards.forEach((cardData) => {
-    const newCard = new Card(cardData.name, 
-                             cardData.link, 
-                             ".card-template", 
-                             handleCardClick); 
-
-    const cardElement= newCard.generateCard();
-
-    placesContainer.append(cardElement);
 });
 
-// Agregar listeners para mostrar y ocultar el popup
+// ===============================
+// Listeners de botones principales
+// ===============================
 buttonEdit.addEventListener("click", () => {
-    showPopup(popupWithForm); 
+    popupWithForm.open();
 });
 
 buttonEditPlaces.addEventListener("click", () => {
-    showPopup(popupPlacesForm); 
+    popupPlacesForm.open();
 });
+

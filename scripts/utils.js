@@ -1,12 +1,13 @@
-import Card from './Card.js';
-import PopupWithImage from './PopupWithImage.js';
-import UserInfo from './UserInfo.js';
-
-// Selección de elementos reutilizables
+// ===============================
+// Variables reutilizables
+// ===============================
 export const forms = document.querySelectorAll("form");
 export const buttonEdit = document.querySelector(".header__author-edit");
 export const buttonEditPlaces = document.querySelector(".header__button");
-export const placesContainer = document.querySelector(".places");
+
+// ===============================
+// Configuración de validación
+// ===============================
 
 export const configs = {
     formSelector: ".form",
@@ -17,38 +18,35 @@ export const configs = {
     errorClass: "form__input-error"
   };
 
-const userInfo = new UserInfo({
-    nameSelector: ".header__author-name",
-    aboutSelector: ".header__author-about"
-});
+// ===============================
+// Tarjetas iniciales
+// ===============================
 
-export const handleAuthorFormSubmit = (inputValues) => {
-    userInfo.setUserInfo(inputValues);
-};
-
-export const handleCardClick = (title, url, popupElement) => {
-    const placesContainer = document.querySelector(".places");
-    placesContainer.appendChild(popupElement);
-    const popupWithImage = new PopupWithImage(".places__hidden-popup");
-    popupWithImage.setEventListeners();
-    popupWithImage.open({
-        src: url,
-        alt: title,
-        description: title
-      });
-    };
-
-export const handlePlacesFormSubmit = (inputValues) => {
-    const newCard = new Card(inputValues.titulo, inputValues.url, ".card-template", handleCardClick);
-    const element = newCard.generateCard();
-    const placesContainer = document.querySelector(".places");
-    placesContainer.insertBefore(element, placesContainer.firstChild);
-};
-
-// Función para esconder un popup
-export const showPopup = (popup) => {
-    popup.open();
-};
-
+export const initialCards = [
+    {
+    name: "Valle de Yosemite",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
+    },
+    {
+    name: "Lago Louise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
+    },
+    {
+    name: "Montañas Calvas",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
+    },
+    {
+    name: "Latemar",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
+    },
+    {
+    name: "Parque Nacional de la Vanoise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
+    },
+    {
+    name: "Lago di Braies",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
+    }
+];
 
 

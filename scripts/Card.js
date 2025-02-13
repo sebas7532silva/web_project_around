@@ -12,15 +12,13 @@ export default class Card {
             .content;
 
         const cardElement = templateContent.querySelector('.places__card').cloneNode(true);
-        const popupElement = templateContent.querySelector('.places__hidden-popup').cloneNode(true);
 
-        return { cardElement, popupElement };
+        return cardElement;
     }
 
     generateCard() {
-        const { cardElement, popupElement } = this._getTemplate();
+        const cardElement = this._getTemplate();
         this._element = cardElement;
-        this._popupElement = popupElement;
 
         this._setEventListeners();
 
@@ -34,7 +32,7 @@ export default class Card {
 
     _setEventListeners() {
         this._element.querySelector('.places__card-image').addEventListener('click', () => {
-            this._handleCardClick(this._name, this._link, this._popupElement);
+            this._handleCardClick(this._name, this._link);
         });
 
         this._trash();
