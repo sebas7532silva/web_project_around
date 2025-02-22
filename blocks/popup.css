@@ -28,6 +28,14 @@
     flex-direction: row;
 }
 
+#trash-popup-container.popup__container {
+    top: 270px;
+}
+
+#edit-image-container.popup__container {
+    top: 224px;
+}
+
 .popup__close {
     display: flex;
     position: fixed;
@@ -40,6 +48,14 @@
     top: 52px;
     margin-left: 438px;
     padding: 0;
+}
+
+#trash-close-icon.popup__close {
+    top: 223px;
+}
+
+#image-close-icon.popup__close {
+    top: 177px;
 }
 
 .popup__close-icon {

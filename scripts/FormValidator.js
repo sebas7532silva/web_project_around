@@ -69,13 +69,3 @@ export default class FormValidator {
         this._toggleSubmitButton();
     }
 }
-
-const configs = {
-    formSelector: ".form",
-    inputSelector: ".form__input",
-    submitButtonSelector: ".form__save",
-    inactiveButtonClass: "form__save_inactive",
-    inputErrorClass: "form__input_type_error",
-    errorClass: "form__input-error"
-  };
-

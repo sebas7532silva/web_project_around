@@ -6,7 +6,6 @@ export default class Popup {
     }
   
     open() {
-      
       this._popup.classList.add('popup_opened');
       document.addEventListener('keydown', this._handleEscClose);
     }
@@ -23,7 +22,7 @@ export default class Popup {
     }
   
     setEventListeners() {
-      if (this._selector === '.places__hidden-popup') {
+      if (this._selector === '.places__hidden-popup'){
         this._popup.querySelector('.places__card-closure').addEventListener('click', () => this.close());
       } else {
         this._popup.querySelector('.popup__close').addEventListener('click', () => this.close());

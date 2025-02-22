@@ -12,9 +12,9 @@ export default class UserInfo {
       };
     }
   
-    setUserInfo({ nombre, about }) {
-      if (nombre) this._nameElement.textContent = nombre; 
-      if (about) this._aboutElement.textContent = about; 
+    setUserInfo({ name, about }) {
+      if (name) this._nameElement.textContent = name; 
+      if (name) this._aboutElement.textContent = about; 
     }
   }
   

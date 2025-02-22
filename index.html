@@ -18,11 +18,48 @@
                         class="header__logo"
                         alt="Logo de Around the U.S" />
                 </div>
+                <div id ="edit-image" class="popup">
+                    <div id="edit-image-container" 
+                         class="popup__container">
+                        <button id="image-close-icon" class="popup__close">
+                            <img src="./images/close_icon.svg"
+                                    class="popup__close-icon"
+                                    alt="Close" />
+                        </button>
+                        <form id="form-image"
+                                class="form"
+                                novalidate>
+                            <h2 
+                                class="form__title">
+                                Cambiar foto de perfil
+                            </h2>
+                            <label class="form__field">
+                                <input type="url" 
+                                    id="url-input" 
+                                    name="url"
+                                    class="form__input"
+                                    placeholder="Enlace a la imagen"
+                                    required>
+                                <span class="form__input-error" id="url-input-error"></span>
+                            </label>
+                            <button type="submit" 
+                                    value="Guardar"
+                                    class="form__save">
+                                    Guardar
+                            </button>
+                        </form>
+                    </div>
+                </div>
                 <div class="header__content">
                     <div class="header__image-container">
                         <img src="./images/Explorer.jpg"
                          class="header__image"
                          alt="Foto del explorador" />
+                         <button class="header__image-edit">
+                            <img src="./images/author_pen_edit.svg"
+                                 class="header__pen-edit-icon"
+                                 alt="Logo para editar" />
+                        </button>
                     </div>
                     <div class="header__author-information">
                         <h1 class="header__author-name">Jacques Cousteau</h1>
@@ -57,7 +94,7 @@
                             <label class="form__field">
                                 <input type="text" 
                                     id="name-input" 
-                                    name="nombre"
+                                    name="name"
                                     class="form__input"
                                     placeholder="Nombre"
                                     minlength="2"
@@ -144,6 +181,29 @@
                             </div>
                         </div>
                     </template>
+                    <div id ="trashConfirmation" class="places__trash-popup">
+                        <div id="trash-popup-container" 
+                                class="popup__container">
+                            <button id="trash-close-icon" class="popup__close">
+                                <img src="./images/close_icon.svg"
+                                        class="popup__close-icon"
+                                        alt="Close" />
+                            </button>
+                            <form id="form-trash"
+                                    class="form"
+                                    novalidate>
+                                <h2 id="form-trash-title" 
+                                    class="form__title">
+                                    ¿Estás seguro/a?
+                                </h2>
+                                <button type="submit" 
+                                        value="Sí"
+                                        class="form__save">
+                                        Sí
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                     <div class="places__hidden-popup">
                         <div class="places__hidden-container">
                             <button class="places__card-closure">
